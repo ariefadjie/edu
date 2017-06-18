@@ -12,5 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('admin.dashboard');
+});
+
+Route::group(['namespace'=>'Admin','as'=>'admin.'],function(){
+	Route::get('/', function () {
+	    return redirect()->route('admin.dashboard');
+	});
+	Route::get('dashboard',function(){
+		return view('admin.dashboard');
+	})->name('dashboard');
+	Route::resource('students','StudentController');
 });
