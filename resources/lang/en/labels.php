@@ -18,4 +18,7 @@ return [
 	'edit' => 'Edit',
 	'delete' => 'Delete',
 	'action' => 'Action',
+	'placeholder' => 'Enter ...',
+	'password' => 'Password',
+	'password_confirm' => 'Confirm Password',
 ];

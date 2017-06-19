@@ -13,16 +13,13 @@
             <th>{{trans('labels.created_at')}}</th>
             <th>{{trans('labels.action')}}</th>
           </tr>
-          @foreach($users as $user)
+          @foreach($users as $row)
           <tr>
-            <td>{{$user->id}}</td>
-            <td>{{$user->name}}</td>
-            <td>{{$user->email}}</td>
-            <td>{{$user->created_at->format('Y-m-d H:i')}}</td>
-            <td>
-              <span class="label label-warning">{{trans('labels.edit')}}</span>
-              <span class="label label-danger">{{trans('labels.delete')}}</span>
-              </td>
+            <td>{{$row->id}}</td>
+            <td>{{$row->name}}</td>
+            <td>{{$row->email}}</td>
+            <td>{{$row->created_at->format('Y-m-d H:i')}}</td>
+            <td>@include('vendor.button.action')</td>
           </tr>
           @endforeach
         </table>

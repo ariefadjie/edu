@@ -1,6 +1,6 @@
 @php
-  $header = trans('labels.'.Request::segment(1));
-  $header_child = Request::segment(2) ? trans('labels.'.Request::segment(2)) : null;
+  $header = trans('labels.'.routeModel());
+  $header_child = routeMethod() ? trans('labels.'.routeMethod()) : null;
 @endphp
 <!DOCTYPE html>
 <html>
