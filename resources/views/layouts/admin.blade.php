@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{{asset('plugins/select2/select2.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('dist/css/AdminLTE.min.css')}}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -35,9 +37,9 @@
     <!-- Logo -->
     <a href="{{route('admin.')}}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>L</b></span>
+      <span class="logo-mini"><b>D</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Learn</b>EDU</span>
+      <span class="logo-lg"><b>Dharma</b>EDU</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -97,24 +99,15 @@
           <a href="#"><i class="fa fa-circle text-success"></i> {{trans('labels.online')}} </a>
         </div>
       </div>
-      {{--
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      <!-- /.search form -->
-      --}}
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">{{trans('labels.main_navigation')}}</li>
         <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> <span>{{trans('labels.dashboard')}}</span></a></li>
         <li><a href="{{route('admin.users.index')}}"><i class="fa fa-users"></i> <span>{{trans('labels.users')}}</span></a></li>
+        <li><a href="{{route('admin.courses.index')}}"><i class="fa fa-graduation-cap"></i> <span>{{trans('labels.courses')}}</span></a></li>
+        <li><a href="{{route('admin.tasks.index')}}"><i class="fa fa-tasks"></i> <span>{{trans('labels.tasks')}}</span></a></li>
+        <li><a href="{{route('admin.questions.index')}}"><i class="fa fa-question-circle"></i> <span>{{trans('labels.questions')}}</span></a></li>
+        <li><a href="{{route('admin.answers.index')}}"><i class="fa fa-pencil-square-o"></i> <span>{{trans('labels.answers')}}</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -156,6 +149,8 @@
 <script src="{{asset('plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
+<!-- Select2 -->
+<script src="{{asset('plugins/select2/select2.full.min.js')}}"></script>
 <!-- Slimscroll -->
 <script src="{{asset('plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
 <!-- FastClick -->
@@ -167,8 +162,9 @@
 <script src="{{asset('dist/js/demo.js')}}"></script>
 --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-
 <!-- Include this after the sweet alert js file -->
 @include('sweet::alert')
+<!-- Page script -->
+@yield('script')
 </body>
 </html>

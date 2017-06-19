@@ -19,6 +19,10 @@ Route::group(['namespace'=>'Admin','as'=>'admin.','middleware'=>'auth'],function
 		return view('admin.dashboard');
 	})->name('dashboard');
 	Route::resource('users','UserController');
+	Route::resource('courses','CourseController');
+	Route::resource('tasks','TaskController');
+	Route::resource('questions','QuestionController');
+	Route::resource('answers','AnswerController');
 });
 
 Auth::routes();

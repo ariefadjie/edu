@@ -33,6 +33,6 @@ class UsersTableSeeder extends Seeder
         			'password' => bcrypt(123123),
         			'created_at' => Carbon::now(),
         		],
-        	]);
+        ]);
     }
 }

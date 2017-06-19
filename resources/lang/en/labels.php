@@ -21,4 +21,12 @@ return [
 	'placeholder' => 'Enter ...',
 	'password' => 'Password',
 	'password_confirm' => 'Confirm Password',
+	'password_current' => 'Current Password',
+	'password_new' => 'New Password',
+	'password_new_confirm' => 'Confirm New Password',
+	'courses' => 'Courses',
+	'courses_select' => 'Select Courses',
+	'tasks' => 'Tasks',
+	'questions' => 'Questions',
+	'answers' => 'Answers',
 ];

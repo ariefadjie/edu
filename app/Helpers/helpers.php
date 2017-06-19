@@ -34,4 +34,8 @@ function alertMessage()
 	$message = routeMethod().' '.routeModel();
 	return ucfirst($message);
 }
+function swal($type)
+{
+    return alert()->{$type}(alertMessage(),ucwords($type).'!');
+}
 

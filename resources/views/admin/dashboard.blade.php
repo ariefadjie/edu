@@ -20,14 +20,14 @@
     <!-- small box -->
     <div class="small-box bg-green">
       <div class="inner">
-        <h3>53<sup style="font-size: 20px">%</sup></h3>
+        <h3>{{App\Course::count()}}</h3>
 
-        <p>Bounce Rate</p>
+        <p>{{trans('labels.courses')}}</p>
       </div>
       <div class="icon">
-        <i class="ion ion-stats-bars"></i>
+        <i class="fa fa-graduation-cap"></i>
       </div>
-      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="{{route('admin.courses.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <!-- ./col -->
@@ -37,10 +37,10 @@
       <div class="inner">
         <h3>{{App\User::count()}}</h3>
 
-        <p>User Registrations</p>
+        <p>{{trans('labels.users')}}</p>
       </div>
       <div class="icon">
-        <i class="ion ion-person-add"></i>
+        <i class="fa fa-users"></i>
       </div>
       <a href="{{route('admin.users.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
     </div>
