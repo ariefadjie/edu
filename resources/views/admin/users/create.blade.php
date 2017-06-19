@@ -3,10 +3,7 @@
 <div class="row">
 	<div class="col-xs-12">
 	<div class="box box-warning">
-		<div class="box-header with-border">
-		  <h3 class="box-title">General Elements</h3>
-		</div>
-		<!-- /.box-header -->
+   		 @include('vendor.button.create')
 		<div class="box-body">
 		  <form role="form">
 		    <!-- text input -->

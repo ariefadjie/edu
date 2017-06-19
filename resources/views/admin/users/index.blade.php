@@ -3,35 +3,26 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="box">
-      <div class="box-header">
-        <a href="{{route('admin.users.create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> <span>Create</span></a>
-        <div class="box-tools">
-          <div class="input-group input-group-sm" style="width: 150px;">
-            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-            <div class="input-group-btn">
-              <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /.box-header -->
+    @include('vendor.button.index')
       <div class="box-body table-responsive no-padding">
         <table class="table table-hover">
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Status</th>
-            <th>Created At</th>
+            <th>{{trans('labels.id')}}</th>
+            <th>{{trans('labels.name')}}</th>
+            <th>{{trans('labels.email')}}</th>
+            <th>{{trans('labels.created_at')}}</th>
+            <th>{{trans('labels.action')}}</th>
           </tr>
           @foreach($users as $user)
           <tr>
             <td>{{$user->id}}</td>
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
-            <td><span class="label label-success">Active</span></td>
             <td>{{$user->created_at->format('Y-m-d H:i')}}</td>
+            <td>
+              <span class="label label-warning">{{trans('labels.edit')}}</span>
+              <span class="label label-danger">{{trans('labels.delete')}}</span>
+              </td>
           </tr>
           @endforeach
         </table>

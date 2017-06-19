@@ -1,6 +1,6 @@
 @php
-  $header = ucwords(Request::segment(1));
-  $header_child = ucwords(Request::segment(2));
+  $header = trans('labels.'.Request::segment(1));
+  $header_child = Request::segment(2) ? trans('labels.'.Request::segment(2)) : null;
 @endphp
 <!DOCTYPE html>
 <html>
@@ -62,16 +62,16 @@
 
                 <p>
                   {{ Auth::user()->name }}
-                  <small>Member since {{ Auth::user()->created_at->format('M, Y') }}</small>
+                  <small>{{trans('labels.member_since')}} {{ Auth::user()->created_at->format('M, Y') }}</small>
                 </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="#" class="btn btn-default btn-flat">{{trans('labels.profile')}}</a>
                 </div>
                 <div class="pull-right">
-                  <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>
+                  <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{trans('labels.sign_out')}} </a>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   {{ csrf_field() }}
                   </form>
@@ -94,7 +94,7 @@
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->name }}</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <a href="#"><i class="fa fa-circle text-success"></i> {{trans('labels.online')}} </a>
         </div>
       </div>
       {{--
@@ -112,9 +112,9 @@
       --}}
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        <li class="header">MAIN NAVIGATION</li>
-        <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span> </a></li>
-        <li><a href="{{route('admin.users.index')}}"><i class="fa fa-users"></i> <span>Users</span> </a></li>
+        <li class="header">{{trans('labels.main_navigation')}}</li>
+        <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> <span>{{trans('labels.dashboard')}}</span></a></li>
+        <li><a href="{{route('admin.users.index')}}"><i class="fa fa-users"></i> <span>{{trans('labels.users')}}</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -129,7 +129,7 @@
         <small>{{$header_child}}</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> {{trans('labels.home')}} </a></li>
         <li class="active">{{$header}}</li>
       </ol>
     </section>
