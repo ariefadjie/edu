@@ -11,8 +11,8 @@ class CourseController extends Controller
 {
     public function index()
     {
-    	$courses = Course::orderBy('name')->paginate(50);
-    	return view('admin.courses.index',compact('courses'));
+    	$rows = Course::orderBy('name')->paginate(50);
+    	return view('admin.courses.index',compact('rows'));
     }
 
     public function create()

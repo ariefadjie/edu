@@ -12,8 +12,14 @@ class TaskController extends Controller
 {
     public function index()
     {
-    	$courses = Task::latest()->paginate(50);
-    	return view('admin.tasks.index',compact('courses'));
+    	$rows = Task::latest()->paginate(50);
+    	return view('admin.tasks.index',compact('rows'));
+    }
+
+    public function show($id)
+    {
+        $rows = Task::where('course_id',$id)->latest()->paginate(50);
+        return view('admin.tasks.index',compact('rows'));
     }
 
     public function create()
@@ -24,6 +30,7 @@ class TaskController extends Controller
 
     public function store(TaskRequest $request)
     {
+        $request['course_id'] =  $request->input('course');
     	Task::create($request->all());
     	swal('success');
     	return redirect()->route('admin.tasks.index');
@@ -38,6 +45,7 @@ class TaskController extends Controller
 
     public function update(TaskRequest $request,$id)
     {
+        $request['course_id'] =  $request->input('course');
     	Task::find($id)->update($request->all());
     	swal('success');
     	return redirect()->route('admin.tasks.index');

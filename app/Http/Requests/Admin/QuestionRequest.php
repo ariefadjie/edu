@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TaskRequest extends FormRequest
+class QuestionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class TaskRequest extends FormRequest
     public function rules()
     {
         return [
-            'course' => 'required',
-            'name' => 'required|max:255',
-            'type' => 'required',
+            'task' => 'required',
+            'content' => 'required',
+            'max_score' => 'required|numeric',
         ];
     }
 }

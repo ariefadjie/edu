@@ -5,16 +5,18 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Course extends Model
+class Question extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
-    	'name',
+    	'content',
+    	'task_id',
+    	'max_score',
     ];
 
-    public function tasks()
+    public function task()
     {
-    	return $this->hasMany(Task::class);
+    	return $this->belongsTo(Task::class);
     }
 }

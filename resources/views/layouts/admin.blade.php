@@ -168,6 +168,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 <!-- Include this after the sweet alert js file -->
 @include('sweet::alert')
+<script type="text/javascript">
+  $(function () {
+    //Initialize Select2 Elements
+    $(".select2").select2();
+  });
+</script>
 <!-- Page script -->
 @yield('script')
 </body>

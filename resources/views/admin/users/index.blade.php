@@ -13,7 +13,7 @@
             <th>{{trans('labels.created_at')}}</th>
             <th>{{trans('labels.action')}}</th>
           </tr>
-          @foreach($users as $row)
+          @foreach($rows as $row)
           <tr>
             <td>{{$row->id}}</td>
             <td>{{$row->name}}</td>
@@ -27,7 +27,7 @@
       <!-- /.box-body -->
 
       <div class="box-footer clearfix">
-        {!!$users->render()!!}
+        {!!$rows->render()!!}
       </div>
     </div>
     <!-- /.box -->

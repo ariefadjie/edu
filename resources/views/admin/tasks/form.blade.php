@@ -6,7 +6,7 @@
         <select name="course" class="form-control select2" data-placeholder="{{trans('labels.course_select')}}" style="width: 100%;">
         @foreach($courses as $id => $name)
           <option value="{{$id}}"
-          {{$row->course_id==$id ? 'selected' : ''}}
+          {{isset($row) && $row->course_id==$id ? 'selected' : ''}}
           >{{$name}}</option>
         @endforeach
         </select>
@@ -23,12 +23,12 @@
         <label>{{trans('labels.type')}}</label>
         <div>
         <label>
-          <input type="radio" name="type" value="task" class="flat-red" checked>
+          <input type="radio" name="type" value="task" class="flat-red" {{isset($row) && $row->type=='Task' ? 'checked' : ''}} {{empty($row) ? 'checked' : ''}}>
           Task
         </label>
         &nbsp;
         <label>
-          <input type="radio" name="type" value="quiz" class="flat-red">
+          <input type="radio" name="type" value="quiz" class="flat-red" {{isset($row) && $row->type=='Quiz' ? 'checked' : ''}}>
           Quiz
         </label>
         </div>
@@ -40,8 +40,6 @@
 @section('script')
 <script>
   $(function () {
-    //Initialize Select2 Elements
-    $(".select2").select2();
     //Flat red color scheme for iCheck
     $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
       checkboxClass: 'icheckbox_flat-green',

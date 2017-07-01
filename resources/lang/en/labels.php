@@ -29,8 +29,13 @@ return [
 	'course' => 'Course',
 	'course_select' => 'Select Course',
 	'tasks' => 'Tasks',
+	'task' => 'Task',
+	'max_score' => 'Max Score',
+	'content' => 'Content',
 	'questions' => 'Questions',
 	'answers' => 'Answers',
 	'type' => 'Type',
 	'course' => 'Course',
+	'total_max_score' => 'Total Max Score',
+	'show' => '',
 ];

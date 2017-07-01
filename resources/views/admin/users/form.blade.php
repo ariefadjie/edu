@@ -62,11 +62,3 @@
   </div>
 </div>
 @include('vendor.button.create')
-@section('script')
-<script>
-  $(function () {
-    //Initialize Select2 Elements
-    $(".select2").select2();
-  });
-</script>
-@endsection

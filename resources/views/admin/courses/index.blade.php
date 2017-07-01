@@ -12,12 +12,12 @@
             <th>{{trans('labels.created_at')}}</th>
             <th>{{trans('labels.action')}}</th>
           </tr>
-          @foreach($courses as $row)
+          @foreach($rows as $row)
           <tr>
             <td>{{$row->id}}</td>
             <td>{{$row->name}}</td>
             <td>{{$row->created_at->format('Y-m-d H:i')}}</td>
-            <td>@include('vendor.button.action')</td>
+            <td>@include('vendor.button.action') <a href="{{route('admin.tasks.show',$row->id)}}"><span class="btn btn-primary btn-sm">{{$row->tasks->count()}} {{trans('labels.tasks')}}</span></a></td>
           </tr>
           @endforeach
         </table>
@@ -25,7 +25,7 @@
       <!-- /.box-body -->
 
       <div class="box-footer clearfix">
-        {!!$courses->render()!!}
+        {!!$rows->render()!!}
       </div>
     </div>
     <!-- /.box -->
