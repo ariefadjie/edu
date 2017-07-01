@@ -26,7 +26,11 @@ return [
 	'password_new_confirm' => 'Confirm New Password',
 	'courses' => 'Courses',
 	'courses_select' => 'Select Courses',
+	'course' => 'Course',
+	'course_select' => 'Select Course',
 	'tasks' => 'Tasks',
 	'questions' => 'Questions',
 	'answers' => 'Answers',
+	'type' => 'Type',
+	'course' => 'Course',
 ];
