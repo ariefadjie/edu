@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\TaskRequest;
 use App\Http\Controllers\Controller;
 use App\Task;
 use App\Course;
+use App\Question;
 
 class TaskController extends Controller
 {

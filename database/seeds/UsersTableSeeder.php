@@ -15,6 +15,12 @@ class UsersTableSeeder extends Seeder
     {
     	User::truncate();
         User::insert([
+                [
+                    'name' => 'Jevan Nelson',
+                    'email' => 'jevannelson@gmail.com',
+                    'password' => bcrypt(123123),
+                    'created_at' => Carbon::now(),
+                ],
         		[
         			'name' => 'Arief Gmail',
         			'email' => 'id.ariefadjie@gmail.com',
@@ -34,5 +40,6 @@ class UsersTableSeeder extends Seeder
         			'created_at' => Carbon::now(),
         		],
         ]);
+        DB::table('course_user')->truncate();
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Course;
 use Hash;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -19,7 +20,8 @@ class UserController extends Controller
     public function create()
     {
         $courses = $this->getCourses();
-    	return view('admin.users.create',compact('courses'));
+        $roles = $this->getRoles();
+    	return view('admin.users.create',compact('courses','roles'));
     }
 
     public function store(Request $request)
@@ -28,7 +30,8 @@ class UserController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|unique:users|max:255',
             'password' => 'required|min:6|max:255',
-            'password_confirmation' => 'same:password'
+            'password_confirmation' => 'same:password',
+            'roles' => 'required',
             ]);
         $request['password'] = bcrypt($request->input('password'));
         User::create($request->all());
@@ -40,14 +43,16 @@ class UserController extends Controller
     {
     	$row = User::findOrFail($id);
         $courses = $this->getCourses();
-    	return view('admin.users.edit',compact('row','courses'));
+        $roles = $this->getRoles();
+    	return view('admin.users.edit',compact('row','courses','roles'));
     }
 
     public function update(Request $request,$id)
     {
         $user= User::find($id);
         $this->validate($request,[
-            'name' => 'required|max:255'
+            'name' => 'required|max:255',
+            'roles' => 'required',
         ]);
         if($request->input('email')!=$user->email)
         {
@@ -77,6 +82,7 @@ class UserController extends Controller
         }
         $user->update($request->all());
         $user->courses()->sync($request->input('courses'));
+        $user->syncRoles($request->input('roles'));
         swal('success');
         return redirect()->route('admin.users.index');
     }
@@ -91,5 +97,10 @@ class UserController extends Controller
     public function getCourses()
     {
         return Course::pluck('name','id');
+    }
+
+    public function getRoles()
+    {
+        return Role::all();
     }
 }

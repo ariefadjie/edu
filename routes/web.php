@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['namespace'=>'Admin','as'=>'admin.','middleware'=>'auth'],function(){
+Route::group(['prefix'=>'admin','namespace'=>'Admin','as'=>'admin.','middleware'=>'auth'],function(){
 	Route::get('/', function () {
 	    return redirect()->route('admin.dashboard');
 	});
@@ -22,7 +22,14 @@ Route::group(['namespace'=>'Admin','as'=>'admin.','middleware'=>'auth'],function
 	Route::resource('courses','CourseController');
 	Route::resource('tasks','TaskController');
 	Route::resource('questions','QuestionController');
-	Route::resource('answers','AnswerController');
+	//Route::resource('answers','AnswerController');
 });
 
 Auth::routes();
+
+Route::group(['prefix'=>'user','namespace'=>'User','as'=>'user.','middleware'=>'auth'],function(){
+	Route::get('tasks',['as'=>'tasks.index','uses'=>'TaskController@index']);
+	Route::get('tasks/{id}',['as'=>'tasks.show','uses'=>'TaskController@show']);
+	Route::get('questions/{id}/answer',['as'=>'questions.answer','uses'=>'QuestionController@answer']);
+	Route::post('answer',['as'=>'answer.store','uses'=>'AnswerController@store']);
+});

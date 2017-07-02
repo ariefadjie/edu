@@ -8,6 +8,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>{{config('app.name').' | '.$header}}</title>
+  <link rel="icon" type="image/ico" href="{{asset('favicon-graduation-cap.ico')}}">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -102,15 +103,23 @@
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
+      @role('admin')
       <ul class="sidebar-menu">
-        <li class="header">{{trans('labels.main_navigation')}}</li>
+        <li class="header">{{trans('labels.admin_navigation')}}</li>
         <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> <span>{{trans('labels.dashboard')}}</span></a></li>
         <li><a href="{{route('admin.users.index')}}"><i class="fa fa-users"></i> <span>{{trans('labels.users')}}</span></a></li>
         <li><a href="{{route('admin.courses.index')}}"><i class="fa fa-graduation-cap"></i> <span>{{trans('labels.courses')}}</span></a></li>
         <li><a href="{{route('admin.tasks.index')}}"><i class="fa fa-tasks"></i> <span>{{trans('labels.tasks')}}</span></a></li>
         <li><a href="{{route('admin.questions.index')}}"><i class="fa fa-question-circle"></i> <span>{{trans('labels.questions')}}</span></a></li>
-        <li><a href="{{route('admin.answers.index')}}"><i class="fa fa-pencil-square-o"></i> <span>{{trans('labels.answers')}}</span></a></li>
+        {{--<li><a href="{{route('admin.answers.index')}}"><i class="fa fa-pencil-square-o"></i> <span>{{trans('labels.answers')}}</span></a></li>--}}
       </ul>
+      @endrole
+      @role('user')
+      <ul class="sidebar-menu">
+        <li class="header">{{trans('labels.user_navigation')}}</li>
+        <li><a href="{{route('user.tasks.index')}}"><i class="fa fa-tasks"></i> <span>{{trans('labels.tasks')}}</span></a></li>
+      </ul>
+      @endrole
     </section>
     <!-- /.sidebar -->
   </aside>

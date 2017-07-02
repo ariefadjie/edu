@@ -47,13 +47,31 @@
     @endif
     <div class="col-md-6">
       <div class="form-group">
+        <label>{{trans('labels.roles')}}</label>
+        <select name="roles[]" class="form-control select2" multiple="multiple" data-placeholder="{{trans('labels.courses_select')}}" style="width: 100%;">
+        @foreach($roles as $role)
+          <option value="{{$role->name}}"
+          @if(isset($row))
+          @foreach($row->roles as $roles)
+          {{$roles->id==$role->id ? 'selected' : ''}}
+          @endforeach
+          @endif
+          >{{$role->display_name}}</option>
+        @endforeach
+        </select>
+      </div>
+    </div>
+    <div class="col-md-6" style="clear: left;">
+      <div class="form-group">
         <label>{{trans('labels.courses')}}</label>
         <select name="courses[]" class="form-control select2" multiple="multiple" data-placeholder="{{trans('labels.courses_select')}}" style="width: 100%;">
         @foreach($courses as $id => $name)
           <option value="{{$id}}"
+          @if(isset($row))
           @foreach($row->courses as $course)
           {{$course->id==$id ? 'selected' : ''}}
           @endforeach
+          @endif
           >{{$name}}</option>
         @endforeach
         </select>

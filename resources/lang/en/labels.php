@@ -3,7 +3,9 @@
 return [
 	'home' => 'Home',
 	'online' => 'Online',
-	'main_navigation' => 'MAIN NAVIGATION',
+	'admin_navigation' => 'ADMIN NAVIGATION',
+	'user_navigation' => 'USER NAVIGATION',
+	'navigation' => 'NAVIGATION',
 	'dashboard' => 'Dashboard',
 	'users' => 'Users',
 	'profile' => 'Profile',
@@ -34,8 +36,11 @@ return [
 	'content' => 'Content',
 	'questions' => 'Questions',
 	'answers' => 'Answers',
+	'answer' => 'Answer',
 	'type' => 'Type',
 	'course' => 'Course',
 	'total_max_score' => 'Total Max Score',
 	'show' => '',
+	'roles' => 'Roles',
+	'question' => 'Question',
 ];
