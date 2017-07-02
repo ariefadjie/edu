@@ -11,7 +11,20 @@
 |
 */
 
-Route::group(['prefix'=>'admin','namespace'=>'Admin','as'=>'admin.','middleware'=>'auth'],function(){
+Auth::routes();
+
+Route::get('/',['middleware'=>'auth',function(){
+	if(auth()->user()->hasRole('admin'))
+	{
+		return redirect()->route('admin.');
+	}
+	else
+	{
+		return redirect()->route('user.');
+	}
+}]);
+
+Route::group(['prefix'=>'admin','namespace'=>'Admin','as'=>'admin.','middleware'=>['auth','role:admin']],function(){
 	Route::get('/', function () {
 	    return redirect()->route('admin.dashboard');
 	});
@@ -25,11 +38,15 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','as'=>'admin.','middleware'
 	//Route::resource('answers','AnswerController');
 });
 
-Auth::routes();
-
-Route::group(['prefix'=>'user','namespace'=>'User','as'=>'user.','middleware'=>'auth'],function(){
+Route::group(['prefix'=>'user','namespace'=>'User','as'=>'user.','middleware'=>['auth','role:user']],function(){
+	Route::get('/', function () {
+	    return redirect()->route('user.dashboard');
+	});
+	Route::get('dashboard',function(){
+		return view('admin.dashboard');
+	})->name('dashboard');
 	Route::get('tasks',['as'=>'tasks.index','uses'=>'TaskController@index']);
 	Route::get('tasks/{id}',['as'=>'tasks.show','uses'=>'TaskController@show']);
 	Route::get('questions/{id}/answer',['as'=>'questions.answer','uses'=>'QuestionController@answer']);
-	Route::post('answer',['as'=>'answer.store','uses'=>'AnswerController@store']);
+	Route::post('answers',['as'=>'answers.store','uses'=>'AnswerController@store']);
 });

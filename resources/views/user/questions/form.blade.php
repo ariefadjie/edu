@@ -15,7 +15,7 @@
     <div class="col-md-12">
       <div class="form-group">
         <label>{{trans('labels.answer')}}</label>
-        <textarea name="answer" class="form-control" id="editor1" placeholder="{{trans('labels.placeholder')}}">{{old('answer')}}</textarea>
+        <textarea name="answer" class="form-control" id="editor1" placeholder="{{trans('labels.placeholder')}}">{{$answer->content or old('answer')}}</textarea>
         <input type="hidden" name="question_id" value="{{$row->id}}">
       </div>
     </div>

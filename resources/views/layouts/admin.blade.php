@@ -117,6 +117,7 @@
       @role('user')
       <ul class="sidebar-menu">
         <li class="header">{{trans('labels.user_navigation')}}</li>
+        <li><a href="{{route('user.dashboard')}}"><i class="fa fa-dashboard"></i> <span>{{trans('labels.dashboard')}}</span></a></li>
         <li><a href="{{route('user.tasks.index')}}"><i class="fa fa-tasks"></i> <span>{{trans('labels.tasks')}}</span></a></li>
       </ul>
       @endrole
