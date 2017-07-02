@@ -111,7 +111,7 @@
         <li><a href="{{route('admin.courses.index')}}"><i class="fa fa-graduation-cap"></i> <span>{{trans('labels.courses')}}</span></a></li>
         <li><a href="{{route('admin.tasks.index')}}"><i class="fa fa-tasks"></i> <span>{{trans('labels.tasks')}}</span></a></li>
         <li><a href="{{route('admin.questions.index')}}"><i class="fa fa-question-circle"></i> <span>{{trans('labels.questions')}}</span></a></li>
-        {{--<li><a href="{{route('admin.answers.index')}}"><i class="fa fa-pencil-square-o"></i> <span>{{trans('labels.answers')}}</span></a></li>--}}
+        <li><a href="{{route('admin.answers.index')}}"><i class="fa fa-pencil-square-o"></i> <span>{{trans('labels.answers')}}</span></a></li>
       </ul>
       @endrole
       @role('user')

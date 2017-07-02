@@ -35,7 +35,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','as'=>'admin.','middleware'
 	Route::resource('courses','CourseController');
 	Route::resource('tasks','TaskController');
 	Route::resource('questions','QuestionController');
-	//Route::resource('answers','AnswerController');
+	Route::resource('answers','AnswerController');
 });
 
 Route::group(['prefix'=>'user','namespace'=>'User','as'=>'user.','middleware'=>['auth','role:user']],function(){

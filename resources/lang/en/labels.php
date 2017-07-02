@@ -43,4 +43,7 @@ return [
 	'show' => '',
 	'roles' => 'Roles',
 	'question' => 'Question',
+	'user' => 'User',
+	'answered_at' => 'Answered At',
+	'correct' => 'Correct',
 ];
