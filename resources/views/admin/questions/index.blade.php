@@ -18,7 +18,7 @@
           <tr>
             <td>{{$row->id}}</td>
             <td>{{$row->task->name or ''}}</td>
-            <td>{{$row->content}}</td>
+            <td>{!!$row->content!!}</td>
             <td>{{$row->max_score}}</td>
             <td>{{$row->created_at->format('Y-m-d H:i')}}</td>
             <td>@include('vendor.button.action')</td>
