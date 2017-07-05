@@ -36,6 +36,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','as'=>'admin.','middleware'
 	Route::resource('tasks','TaskController');
 	Route::resource('questions','QuestionController');
 	Route::resource('answers','AnswerController');
+	Route::get('reports',['as'=>'reports.index','uses'=>'ReportController@index']);
 });
 
 Route::group(['prefix'=>'user','namespace'=>'User','as'=>'user.','middleware'=>['auth','role:user']],function(){

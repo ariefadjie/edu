@@ -112,6 +112,7 @@
         <li><a href="{{route('admin.tasks.index')}}"><i class="fa fa-tasks"></i> <span>{{trans('labels.tasks')}}</span></a></li>
         <li><a href="{{route('admin.questions.index')}}"><i class="fa fa-question-circle"></i> <span>{{trans('labels.questions')}}</span></a></li>
         <li><a href="{{route('admin.answers.index')}}"><i class="fa fa-pencil-square-o"></i> <span>{{trans('labels.answers')}}</span></a></li>
+        <li><a href="{{route('admin.reports.index')}}"><i class="fa fa-book"></i> <span>{{trans('labels.reports')}}</span></a></li>
       </ul>
       @endrole
       @role('user')

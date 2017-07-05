@@ -46,4 +46,6 @@ return [
 	'user' => 'User',
 	'answered_at' => 'Answered At',
 	'correct' => 'Correct',
+	'score' => 'Score',
+	'reports' => 'Reports',
 ];
