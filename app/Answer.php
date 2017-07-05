@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use DB;
 
 class Answer extends Model
 {
@@ -33,5 +34,23 @@ class Answer extends Model
         } catch (\Exception $e){
             return null;
         }
+    }
+
+    public function getSumScoreAttribute()
+    {
+        return DB::table('tasks')
+        ->join('questions','questions.task_id','=','tasks.id')
+        ->join('answers','answers.question_id','=','questions.id')
+        ->where('tasks.id',$this->question->task_id)
+        ->where('answers.user_id',$this->user_id)
+        ->sum('answers.score');
+    }
+
+    public function getSumMaxScoreAttribute()
+    {
+        return DB::table('tasks')
+        ->join('questions','questions.task_id','=','tasks.id')
+        ->where('tasks.id',$this->question->task_id)
+        ->sum('questions.max_score');
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Answer;
 use App\User;
+use DB;
 
 class ReportController extends Controller
 {

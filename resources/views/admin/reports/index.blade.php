@@ -24,8 +24,8 @@
 {{--             <td><a href="{{route('admin.reports.index',['question_id'=>$row->question_id])}}">{!!$row->question->content or ''!!}</a></td>
             <td>{!!$row->content!!}</td> --}}
 {{--             <td>{{$row->updated_at->format('Y-m-d H:i')}}</td> --}}
-            <td>{{$row->sum('score')}}</td>
-            <td>{{$row->question->sum('max_score')}}</td>
+            <td>{{$row->sum_score}}</td>
+            <td>{{$row->sum_max_score}}</td>
             <td>{{-- <a href="{{route('admin.answers.edit',$row->id)}}"><span class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> {{trans('labels.correct')}}</span></a> --}}</td>
           </tr>
           @endforeach
