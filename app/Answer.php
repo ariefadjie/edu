@@ -43,6 +43,9 @@ class Answer extends Model
         ->join('answers','answers.question_id','=','questions.id')
         ->where('tasks.id',$this->question->task_id)
         ->where('answers.user_id',$this->user_id)
+        ->whereNull('tasks.deleted_at')
+        ->whereNull('questions.deleted_at')
+        ->whereNull('answers.deleted_at')
         ->sum('answers.score');
     }
 
@@ -51,6 +54,8 @@ class Answer extends Model
         return DB::table('tasks')
         ->join('questions','questions.task_id','=','tasks.id')
         ->where('tasks.id',$this->question->task_id)
+        ->whereNull('tasks.deleted_at')
+        ->whereNull('questions.deleted_at')
         ->sum('questions.max_score');
     }
 }

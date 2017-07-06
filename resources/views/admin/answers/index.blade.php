@@ -20,12 +20,12 @@
           <tr>
             <td>{{$row->id}}</td>
             <td><a href="{{route('admin.answers.index',['user_id'=>$row->user_id])}}">{{$row->user->name or ''}}</a></td>
-            <td><a href="{{route('admin.answers.index',['task_id'=>$row->question->task->id])}}">{{$row->question->task->name}}</a></td>
+            <td><a href="{{route('admin.answers.index',['task_id'=>isset($row->question->task_id) ? $row->question->task_id : null])}}">{{$row->question->task->name or ''}}</a></td>
             <td><a href="{{route('admin.answers.index',['question_id'=>$row->question_id])}}">{!!$row->question->content or ''!!}</a></td>
             <td>{!!$row->content!!}</td>
 {{--             <td>{{$row->updated_at->format('Y-m-d H:i')}}</td> --}}
             <td>{{$row->score}}</td>
-            <td>{{$row->question->max_score}}</td>
+            <td>{{$row->question->max_score or ''}}</td>
             <td><a href="{{route('admin.answers.edit',$row->id)}}"><span class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> {{trans('labels.correct')}}</span></a></td>
           </tr>
           @endforeach

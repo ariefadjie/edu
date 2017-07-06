@@ -16,7 +16,7 @@
           <tr>
             <td>{{$row->id}}</td>
             <td><a href="{{route('admin.reports.index',['user_id'=>$row->user_id])}}">{{$row->user->name or ''}}</a></td>
-            <td><a href="{{route('admin.reports.index',['task_id'=>$row->question->task->id])}}">{{$row->course_type_task}}</a></td>
+            <td><a href="{{route('admin.answers.index',['task_id'=>isset($row->question->task_id) ? $row->question->task_id : null])}}">{{$row->course_type_task}}</a></td>
             <td>{{$row->sum_score}}</td>
             <td>{{$row->sum_max_score}}</td>
           </tr>

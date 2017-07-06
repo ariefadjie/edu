@@ -43,12 +43,16 @@ class AnswerController extends Controller
 
     public function update(Request $request,$id)
     {
-        $row = Answer::find($id);
-        $this->validate($request,[
-            'score' => 'required|numeric|min:0|max:'.$row->question->max_score,
-            ]);
-        $row->update($request->all());
-        swal('success');
+        try{
+            $row = Answer::find($id);
+            $this->validate($request,[
+                'score' => 'required|numeric|min:0|max:'.$row->question->max_score,
+                ]);
+            $row->update($request->all());
+            swal('success');
+        } catch(\Exception $e)
+        {
+        }
         return redirect()->route('admin.answers.index');
     }
 }
