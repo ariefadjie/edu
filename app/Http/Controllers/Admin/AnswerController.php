@@ -17,9 +17,18 @@ class AnswerController extends Controller
         ->join('tasks','questions.task_id','=','tasks.id')
         ->join('users','answers.user_id','=','users.id')
         ->where(function($q) use ($request){
-    		foreach ($request->all() as $key => $value) {
-    			$q->orWhere($key,$value);
-    		}
+            if($request->get('user_id'))
+            {
+                $q->orWhere('users.id',$request->get('user_id'));
+            }
+            if($request->get('task_id'))
+            {
+                $q->orWhere('tasks.id',$request->get('task_id'));
+            }
+            if($request->get('question_id'))
+            {
+                $q->orWhere('questions.id',$request->get('question_id'));
+            }
     	})
         ->orderBy('users.name')
     	->select('answers.*')->paginate(50);

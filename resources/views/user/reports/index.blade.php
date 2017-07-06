@@ -8,19 +8,15 @@
           <tr>
             <th>{{trans('labels.id')}}</th>
             <th>{{trans('labels.task')}}</th>
-            <th>{{trans('labels.content')}}</th>
+            <th>{{trans('labels.score')}}</th>
             <th>{{trans('labels.max_score')}}</th>
-            <th>{{trans('labels.created_at')}}</th>
-            <th>{{trans('labels.action')}}</th>
           </tr>
           @foreach($rows as $row)
           <tr>
             <td>{{$row->id}}</td>
-            <td>{{$row->task->name or ''}}</td>
-            <td>{!!$row->content!!}</td>
-            <td>{{$row->max_score}}</td>
-            <td>{{$row->created_at->format('Y-m-d H:i')}}</td>
-            <td><a href="{{route('user.questions.answer',$row->id)}}"><span class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> {{trans('labels.answer')}}</span></a></td>
+            <td>{{$row->course_type_task}}</td>
+            <td>{{$row->sum_score}}</td>
+            <td>{{$row->sum_max_score}}</td>
           </tr>
           @endforeach
         </table>

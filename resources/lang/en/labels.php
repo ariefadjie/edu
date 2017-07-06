@@ -48,4 +48,5 @@ return [
 	'correct' => 'Correct',
 	'score' => 'Score',
 	'reports' => 'Reports',
+	'settings' => 'Settings',
 ];

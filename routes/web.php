@@ -37,11 +37,13 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','as'=>'admin.','middleware'
 	Route::resource('questions','QuestionController');
 	Route::resource('answers','AnswerController');
 	Route::get('reports',['as'=>'reports.index','uses'=>'ReportController@index']);
+	Route::get('settings',['as'=>'settings.edit','uses'=>'SettingController@edit']);
+	Route::put('settings',['as'=>'settings.update','uses'=>'SettingController@update']);
 });
 
 Route::group(['prefix'=>'user','namespace'=>'User','as'=>'user.','middleware'=>['auth','role:user']],function(){
 	Route::get('/', function () {
-	    return redirect()->route('user.dashboard');
+	    return redirect()->route('user.tasks.index');
 	});
 	Route::get('dashboard',function(){
 		return view('admin.dashboard');
@@ -50,4 +52,7 @@ Route::group(['prefix'=>'user','namespace'=>'User','as'=>'user.','middleware'=>[
 	Route::get('tasks/{id}',['as'=>'tasks.show','uses'=>'TaskController@show']);
 	Route::get('questions/{id}/answer',['as'=>'questions.answer','uses'=>'QuestionController@answer']);
 	Route::post('answers',['as'=>'answers.store','uses'=>'AnswerController@store']);
+	Route::get('reports',['as'=>'reports.index','uses'=>'ReportController@index']);
+	Route::get('settings',['as'=>'settings.edit','uses'=>'SettingController@edit']);
+	Route::put('settings',['as'=>'settings.update','uses'=>'SettingController@update']);
 });

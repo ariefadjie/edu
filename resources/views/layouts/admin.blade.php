@@ -73,7 +73,11 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">{{trans('labels.profile')}}</a>
+                @role('admin')
+                  <a href="{{route('admin.users.edit',Auth::user()->id)}}" class="btn btn-default btn-flat">{{trans('labels.settings')}}</a>
+                @else
+                  <a href="{{route('user.settings.edit')}}" class="btn btn-default btn-flat">{{trans('labels.settings')}}</a>
+                @endrole
                 </div>
                 <div class="pull-right">
                   <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{trans('labels.sign_out')}} </a>
@@ -118,8 +122,9 @@
       @role('user')
       <ul class="sidebar-menu">
         <li class="header">{{trans('labels.user_navigation')}}</li>
-        <li><a href="{{route('user.dashboard')}}"><i class="fa fa-dashboard"></i> <span>{{trans('labels.dashboard')}}</span></a></li>
+{{--         <li><a href="{{route('user.dashboard')}}"><i class="fa fa-dashboard"></i> <span>{{trans('labels.dashboard')}}</span></a></li> --}}
         <li><a href="{{route('user.tasks.index')}}"><i class="fa fa-tasks"></i> <span>{{trans('labels.tasks')}}</span></a></li>
+        <li><a href="{{route('user.reports.index')}}"><i class="fa fa-book"></i> <span>{{trans('labels.reports')}}</span></a></li>
       </ul>
       @endrole
     </section>
